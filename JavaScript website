@@ -1,22 +1,32 @@
-// Function to enlarge image on click
-function enlargeImage(image) {
-    image.style.transform = 'scale(1.5)';
-    setTimeout(() => {
-        image.style.transform = 'scale(1)';
-    }, 1000); // Reset the scale after 1 second
-}
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 
-// Function to simulate form submission
-function submitForm() {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-
-    // Simple form validation
-    if (name && email && message) {
-        document.getElementById('formResponse').textContent = `Thank you, ${name}! Your message has been sent.`;
-        document.getElementById('contactForm').reset(); // Reset the form fields
-    } else {
-        document.getElementById('formResponse').textContent = 'Please fill out all fields.';
+@WebServlet("/submitForm")
+public class ContactFormServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        // Get form parameters
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String message = request.getParameter("message");
+        
+        // Set response content type
+        response.setContentType("text/html");
+        
+        // Display a thank-you message
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<h2>Thank you, " + name + "!</h2>");
+        out.println("<p>Your message has been received:</p>");
+        out.println("<p><strong>Email:</strong> " + email + "</p>");
+        out.println("<p><strong>Message:</strong> " + message + "</p>");
+        out.println("<a href=\"index.html\">Back to Home</a>");
+        out.println("</body></html>");
     }
 }
