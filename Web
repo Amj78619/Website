@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>My Cropped Image</h1>
+    <img src="images/cropped-image.jpg" alt="A cropped image" class="my-image">
+</body>
+</html>
+
+
+/* File: styles.css */
+.my-image {
+    width: 300px; /* Resize the image */
+    border: 2px solid black; /* Add a border */
+    border-radius: 10px; /* Round the corners */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Add a shadow */
+}
+
+
